@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Insights & Marketing Blog | Cruzen Digital</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Ambient Background Layer -->
+    <div class="grid-bg"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+
+    <!-- Scroll Sentinel for lag-free sticky header -->
+    <div id="scroll-sentinel"></div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-info">
+                <span><i class="fas fa-envelope"></i> support@cruzendigital.com</span>
+                <span><i class="fas fa-phone-alt"></i> 08062180749</span>
+            </div>
+            <div class="top-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-accent">Cruzen</span>Digital
+                </a>
+            </div>
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <i class="fa fa-search search-icon"></i>
+                    <input type="text" id="header-search" placeholder="Search services...">
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">About Us</a>
+                <div class="dropdown">
+                    <a href="services.html" class="dropdown-trigger">Our Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html?tab=e-commerce">Marketplace Management</a>
+                        <a href="services.html?tab=marketing">Digital Marketing</a>
+                        <a href="services.html?tab=marketing">Influencer Marketing</a>
+                        <a href="services.html?tab=design-development">Website Design</a>
+                        <a href="services.html?tab=e-commerce">Marketplace Branding</a>
+                        <a href="services.html?tab=design-development">Branding Plans</a>
+                        <a href="services.html?tab=marketing">360 Marketing Plans</a>
+                    </div>
+                </div>
+                <a href="blog.html" class="active">Our Blog</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-login">Login <i class="far fa-user-circle"></i></a>
+                <button class="btn btn-consult open-consultation-btn"><i class="fas fa-hand-point-right"></i> Get Consultation</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container blog-hero-container reveal">
+            <span class="section-subtitle">Cruzen Insights</span>
+            <h1 class="reveal-text-wipe">Knowledge to Scale Your E-Commerce Brand</h1>
+            <p>Industry-leading strategies on marketplace optimization, search visibility, conversion rates, and dropshipping growth.</p>
+            
+            <div class="blog-search-box">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-box-icon"></i>
+                    <input type="text" id="blog-search-input" placeholder="Search articles by title or keyword...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Listing & Filter Section -->
+    <section class="blog-listing-section">
+        <div class="container">
+            <!-- Filter Chips -->
+            <div class="blog-filters-row reveal">
+                <button class="filter-chip active" data-filter="all">All Articles</button>
+                <button class="filter-chip" data-filter="marketplace">Marketplace Optimization</button>
+                <button class="filter-chip" data-filter="marketing">Digital Marketing</button>
+                <button class="filter-chip" data-filter="design">Design & Development</button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blog-posts-grid">
+                <!-- Article 1 -->
+                <article class="blog-card reveal stagger-1" data-category="marketplace">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Marketplace</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fas fa-store blog-card-icon-bg"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 18, 2026</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>How to Rank #1 on Amazon Search: The Ultimate 2026 Playbook</h3>
+                        <p>Discover advanced keyword indexation tactics, CTR enhancement calculations, and PPC campaign optimization structures to rank your catalog ahead of competitors.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card reveal stagger-2" data-category="design">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Design</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fas fa-laptop-code blog-card-icon-bg"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 12, 2026</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                        <h3>5 Crucial E-Commerce Conversion Strategies That Double Sales</h3>
+                        <p>We break down layout grid formulas, cart friction indicators, and checkout micro-interactions that boosted client conversion rates from 1.8% to over 3.8%.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card reveal stagger-3" data-category="marketing">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Marketing</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 05, 2026</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>Why Schema Markup is the Secret to E-Commerce SEO Success</h3>
+                        <p>Learn how rich product snippets, aggregate rating review tags, and price indicators in search results natively boost organic CTR and click volumes.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card reveal stagger-1" data-category="design">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Development</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fab fa-shopify blog-card-icon-bg"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 28, 2026</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h3>Shopify vs. Custom Storefronts: API and Speed Integrations</h3>
+                        <p>An in-depth speed comparison between Shopify theme layouts, headless storefront architectures, and their respective checkout API options for growing brands.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card reveal stagger-2" data-category="marketing">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Marketing</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fas fa-users blog-card-icon-bg"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 15, 2026</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>Scaling E-Commerce Stores with Micro-Influencer Campaigns</h3>
+                        <p>Discover why nano and micro-influencers produce up to 4x higher trust ratios and how to structure script briefs that drive direct Shopify store sales.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card reveal stagger-3" data-category="marketplace">
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-tag">Marketplace</div>
+                        <div class="blog-card-glow-overlay"></div>
+                        <i class="fas fa-clipboard-check blog-card-icon-bg"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 02, 2026</span>
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                        </div>
+                        <h3>Flipkart Claims & Suspension Rules: A Guide for Brands</h3>
+                        <p>Learn how to manage returns, document transport damage, submit clear claim evidence, and resolve policy warnings without seller profile downtime.</p>
+                        <div class="blog-card-footer">
+                            <a href="#" class="read-more-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Empty Search State -->
+            <div class="blog-empty-state" id="blog-empty-state" style="display: none;">
+                <i class="fas fa-search-minus empty-icon"></i>
+                <h3>No articles found</h3>
+                <p>We couldn't find any articles matching your search terms. Try searching for "Amazon", "SEO", or "Shopify".</p>
+                <button class="btn btn-consult" id="blog-clear-search-btn">Reset Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Call to Action -->
+    <section class="blog-cta-section reveal">
+        <div class="container blog-cta-container">
+            <h2>Ready to Scale Your Online Revenue?</h2>
+            <p>Our experts will audit your business layout and construct a tailored growth plan for your storefront.</p>
+            <button class="btn btn-consult open-consultation-btn"><i class="fas fa-hand-point-right"></i> Book Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h3 class="logo-accent">Cruzen Digital</h3>
+                <p>Expand your online presence with comprehensive marketing, marketplace management, and website design solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-group">
+                <div class="footer-links-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Team</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <a href="services.html?tab=e-commerce">Marketplace Management</a>
+                    <a href="services.html?tab=marketing">Digital Marketing</a>
+                    <a href="services.html?tab=design-development">Website Design</a>
+                    <a href="services.html?tab=marketing">360 Marketing Plans</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone-alt"></i> 08062180749</p>
+                    <p><i class="fas fa-envelope"></i> info@cruzendigital.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mahavir Enclave, New Delhi, 110045</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Cruzen Digital. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Wizard Modal (Vakilsearch Multi-step style) -->
+    <div id="consultation-modal" class="modal-overlay">
+        <div class="modal-container wizard-box">
+            <button class="modal-close" id="close-consultation-btn">&times;</button>
+            
+            <div class="wizard-header">
+                <h2>Get Free Consultation</h2>
+                <p>Choose your service and slot to talk with our team.</p>
+                
+                <div class="wizard-steps-indicator">
+                    <div class="wizard-steps-indicator-line-fill" id="wizard-line-fill"></div>
+                    <div class="step-indicator active" id="step-ind-1">
+                        <div class="step-indicator-node">1</div>
+                        <span>Choose Service</span>
+                    </div>
+                    <div class="step-indicator" id="step-ind-2">
+                        <div class="step-indicator-node">2</div>
+                        <span>Pick Slot</span>
+                    </div>
+                    <div class="step-indicator" id="step-ind-3">
+                        <div class="step-indicator-node">3</div>
+                        <span>Personal Info</span>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="consultation-form" action="consult.php" method="POST">
+                <input id="website" name="website" type="text" style="display: none;" value="">
+                
+                <div class="wizard-steps">
+                    <!-- Step 1: Services Selection -->
+                    <div class="wizard-step active" id="wizard-step-1">
+                        <h3>1/3 Take Your Business To A New Height With...</h3>
+                        <p class="step-sub">Select the primary service you require assistance with:</p>
+                        <div class="radio-grid">
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="SEO" checked>
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">SEO (Search Engine Optimization)</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="SMO">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">SMO (Social Media Optimization)</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Website">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Website Development</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Amazon">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Amazon Seller Management</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Flipkart">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Flipkart Seller Management</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Graphic Design">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Graphic Design Services</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="No, I Am Not Sure.">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">No, I Am Not Sure.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Slot Selection -->
+                    <div class="wizard-step" id="wizard-step-2">
+                        <h3>2/3 Please Fill With Additional Info</h3>
+                        <p class="step-sub">Choose a convenient date and time for your consultation call:</p>
+                        <div class="form-group-row">
+                            <div class="form-field">
+                                <label for="inputdate">Select Date</label>
+                                <input type="date" id="inputdate" name="date" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="inputtime">Select Time Slot</label>
+                                <select id="inputtime" name="time" required>
+                                    <option value="" disabled selected>Select your time slot</option>
+                                    <option value="11:00 AM To 12:00 PM">11:00 AM To 12:00 PM</option>
+                                    <option value="12:00 PM To 1:00 PM">12:00 PM To 1:00 PM</option>
+                                    <option value="1:00 PM To 2:00 PM">1:00 PM To 2:00 PM</option>
+                                    <option value="2:00 PM To 3:00 PM">2:00 PM To 3:00 PM</option>
+                                    <option value="3:00 PM To 4:00 PM">3:00 PM To 4:00 PM</option>
+                                    <option value="4:00 PM To 5:00 PM">4:00 PM To 5:00 PM</option>
+                                    <option value="5:00 PM To 6:00 PM">5:00 PM To 6:00 PM</option>
+                                    <option value="6:00 PM To 7:00 PM">6:00 PM To 7:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Personal Information -->
+                    <div class="wizard-step" id="wizard-step-3">
+                        <h3>3/3 Personal Information</h3>
+                        <p class="step-sub">How can our expert reach out to you?</p>
+                        <div class="form-field">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-field">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">E-mail Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your business email" required>
+                            </div>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms" name="terms" value="yes" required>
+                            <label for="terms">Please accept Terms And Conditions?</label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Success Message -->
+                    <div class="wizard-step" id="wizard-step-success">
+                        <div class="success-screen">
+                            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                            <h3>Thank You!</h3>
+                            <p>Your free consultation slot has been booked. Our expert will contact you shortly on the phone number provided.</p>
+                            <button type="button" class="btn btn-primary-premium" id="success-close-btn">Close Window</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-footer">
+                    <button type="button" class="btn btn-outline" id="prev-step-btn" disabled>Previous</button>
+                    <button type="button" class="btn btn-consult" id="next-step-btn">Next</button>
+                    <button type="submit" class="btn btn-consult" id="submit-wizard-btn" style="display: none;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Additional Blog-specific Scripting
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('blog-search-input');
+            const filterChips = document.querySelectorAll('.filter-chip');
+            const blogCards = document.querySelectorAll('.blog-card');
+            const emptyState = document.getElementById('blog-empty-state');
+            const clearSearchBtn = document.getElementById('blog-clear-search-btn');
+
+            let activeFilter = 'all';
+            let searchQuery = '';
+
+            function filterPosts() {
+                let visibleCount = 0;
+
+                blogCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const text = card.querySelector('p').textContent.toLowerCase();
+
+                    const matchesFilter = activeFilter === 'all' || category === activeFilter;
+                    const matchesSearch = title.includes(searchQuery) || text.includes(searchQuery);
+
+                    if (matchesFilter && matchesSearch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    emptyState.style.display = 'block';
+                    document.getElementById('blog-posts-grid').style.display = 'none';
+                } else {
+                    emptyState.style.display = 'none';
+                    document.getElementById('blog-posts-grid').style.display = 'grid';
+                }
+            }
+
+            // Search input handler
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value.toLowerCase().trim();
+                    filterPosts();
+                });
+            }
+
+            // Filter chips handler
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    activeFilter = chip.getAttribute('data-filter');
+                    filterPosts();
+                });
+            });
+
+            // Clear search button handler
+            if (clearSearchBtn) {
+                clearSearchBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+                    searchQuery = '';
+                    filterPosts();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

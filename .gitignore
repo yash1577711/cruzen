@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+frontend/dist/
+frontend/.vite/
+
+# Environment secrets — NEVER commit these
+.env
+backend/.env
+*.env.local
+*.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Docker
+*.tar.gz
+
+# Test files pushed to VPS
+backend/smtptest.js
+backend/smtptest2.js
+backend/sendtest.js
+backend/nettest.js

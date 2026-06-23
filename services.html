@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our E-Commerce & Marketing Solutions | Cruzen Digital</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Ambient Background Layer -->
+    <div class="grid-bg"></div>
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+
+    <!-- Scroll Sentinel for lag-free sticky header -->
+    <div id="scroll-sentinel"></div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-info">
+                <span><i class="fas fa-envelope"></i> support@cruzendigital.com</span>
+                <span><i class="fas fa-phone-alt"></i> 08062180749</span>
+            </div>
+            <div class="top-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-accent">Cruzen</span>Digital
+                </a>
+            </div>
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <i class="fa fa-search search-icon"></i>
+                    <input type="text" id="header-search" placeholder="Search services...">
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">About Us</a>
+                <div class="dropdown">
+                    <a href="services.html" class="dropdown-trigger active">Our Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="services.html?tab=e-commerce">Marketplace Management</a>
+                        <a href="services.html?tab=marketing">Digital Marketing</a>
+                        <a href="services.html?tab=marketing">Influencer Marketing</a>
+                        <a href="services.html?tab=design-development">Website Design</a>
+                        <a href="services.html?tab=e-commerce">Marketplace Branding</a>
+                        <a href="services.html?tab=design-development">Branding Plans</a>
+                        <a href="services.html?tab=marketing">360 Marketing Plans</a>
+                    </div>
+                </div>
+                <a href="blog.html">Our Blog</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-login">Login <i class="far fa-user-circle"></i></a>
+                <button class="btn btn-consult open-consultation-btn"><i class="fas fa-hand-point-right"></i> Get Consultation</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Header / Search Banner -->
+    <section class="blog-hero">
+        <div class="container blog-hero-container reveal">
+            <span class="section-subtitle">Growth Solutions</span>
+            <h1 class="reveal-text-wipe">Explore Our 25 Premium Services</h1>
+            <p>We provide full-spectrum digital marketing, custom website design, mobile app development, and marketplace accounts management tailored for Shopify, Amazon, and Flipkart success.</p>
+        </div>
+    </section>
+
+    <!-- Services Interactive Grid Section -->
+    <section class="services" id="services-section" style="padding-top: 40px; background-color: transparent; border-bottom: none;">
+        <div class="container">
+            <!-- Categories Tabs -->
+            <div class="services-tabs reveal">
+                <button class="tab-btn active" data-tab="all">All Solutions</button>
+                <button class="tab-btn" data-tab="e-commerce">E-Commerce Management</button>
+                <button class="tab-btn" data-tab="marketing">Marketing & Advertising</button>
+                <button class="tab-btn" data-tab="design-development">Design & Development</button>
+            </div>
+
+            <!-- Inline Search Bar for Services -->
+            <div class="services-search-wrapper reveal">
+                <div class="services-search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="services-search-box" placeholder="Search from our 25 services (e.g. SEO, Shopify, Myntra, App)...">
+                </div>
+            </div>
+            
+            <div class="services-grid" id="main-services-grid">
+                <!-- 1. Amazon Domestic Account Management -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="amazon domestic seller listing a+ content ppc account management">
+                    <div class="service-icon-wrapper"><i class="fab fa-amazon"></i></div>
+                    <h3>Amazon Domestic Management</h3>
+                    <p>End-to-end seller account management, item listing, A+ content designs, and keyword-bidded PPC advertisement campaigns.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹3,855</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Amazon">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 2. Flipkart Seller Management -->
+                <div class="service-card-premium reveal stagger-2" data-category="e-commerce" data-search-keywords="flipkart seller catalog claims promotions marketing">
+                    <div class="service-icon-wrapper"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>Flipkart Seller Management</h3>
+                    <p>Full seller catalog optimization, returns claims management, organic search indexing, and promotional advertising campaigns.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹3,588</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Flipkart">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 3. Shopify Website Development -->
+                <div class="service-card-premium reveal stagger-3" data-category="design-development" data-search-keywords="shopify website development theme customization e-commerce store setup apps integration">
+                    <div class="service-icon-wrapper"><i class="fab fa-shopify"></i></div>
+                    <h3>Shopify Setup & Development</h3>
+                    <p>Custom Shopify e-commerce designs, theme setups, checkout APIs integration, tax setups, and sales-boosting app extensions.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹15,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Website">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 4. Search Engine Optimization (SEO) -->
+                <div class="service-card-premium reveal stagger-1" data-category="marketing" data-search-keywords="seo search engine optimization keywords ranking organic traffic google index schema audit">
+                    <div class="service-icon-wrapper"><i class="fas fa-search-dollar"></i></div>
+                    <h3>Search Engine Optimization</h3>
+                    <p>On-page optimization, quality schema markup tags, keywords research, technical index audits, and backlink networks to rank #1 on Google.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹7,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SEO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 5. App Development -->
+                <div class="service-card-premium reveal stagger-2" data-category="design-development" data-search-keywords="app development mobile android ios flutter react native screens dashboard ui ux coder">
+                    <div class="service-icon-wrapper"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Android & iOS App Dev</h3>
+                    <p>Custom mobile applications built with Flutter or React Native. Responsive UI layouts, notifications, and web administrative panels.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹45,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Website">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 6. Social Media Marketing (SMM) -->
+                <div class="service-card-premium reveal stagger-3" data-category="marketing" data-search-keywords="smm social media marketing facebook instagram ads posting content calendar graphics">
+                    <div class="service-icon-wrapper"><i class="fas fa-share-alt"></i></div>
+                    <h3>Social Media Marketing (SMM)</h3>
+                    <p>Boost presence on Facebook, Instagram & LinkedIn. Graphic designs, copywriting content calendar, and pixel-tracked campaigns.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SMO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 7. Amazon Global Selling -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="amazon global export selling fba logistics logistics multi-currency international">
+                    <div class="service-icon-wrapper"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Amazon Global Selling</h3>
+                    <p>Register and export internationally to US, Europe & UAE. Multi-currency pricing optimization, FBA warehousing, and global PPC ads.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹14,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Amazon">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 8. Myntra Seller Management -->
+                <div class="service-card-premium reveal stagger-2" data-category="e-commerce" data-search-keywords="myntra seller management fashion clothing apparel listings promotions catalog">
+                    <div class="service-icon-wrapper"><i class="fas fa-tshirt"></i></div>
+                    <h3>Myntra Seller Management</h3>
+                    <p>Scale your fashion brand listing, cataloging, apparel category approvals, pricing calculations, and Myntra PPC campaign management.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,931</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Flipkart">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 9. Social Media Optimization (SMO) -->
+                <div class="service-card-premium reveal stagger-3" data-category="marketing" data-search-keywords="smo social media optimization organic reach profiles audit reels community graphics engagement">
+                    <div class="service-icon-wrapper"><i class="fas fa-users-cog"></i></div>
+                    <h3>Social Media Optimization (SMO)</h3>
+                    <p>Drive organic reach. Setup and optimize handles, create engaging video reels, construct audits, and perform direct customer care replies.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹4,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SMO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 10. Meesho Seller Management -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="meesho seller setup listings claim CTR optimization inventory shipping">
+                    <div class="service-icon-wrapper"><i class="fas fa-truck"></i></div>
+                    <h3>Meesho Seller Management</h3>
+                    <p>Optimize listings for social commerce suppliers. Claim reconciliations, inventory listing uploads, and high CTR campaign setups.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹3,588</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 11. Nykaa Seller Management -->
+                <div class="service-card-premium reveal stagger-2" data-category="e-commerce" data-search-keywords="nykaa cosmetics beauty catalog pricing listings promotions account management">
+                    <div class="service-icon-wrapper"><i class="fas fa-magic"></i></div>
+                    <h3>Nykaa Seller Management</h3>
+                    <p>Establish your beauty or cosmetics brand. Catalog listing creation, pricing strategies, cosmetic registration, and ad campaigns.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 12. Website UI/UX Design -->
+                <div class="service-card-premium reveal stagger-3" data-category="design-development" data-search-keywords="website UI UX design layout responsive prototype figma layout design system">
+                    <div class="service-icon-wrapper"><i class="fas fa-palette"></i></div>
+                    <h3>Website UI/UX Design</h3>
+                    <p>Custom modern mockups, Figma responsive layouts, landing pages assets export, clickable interactive user-flow prototypes.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹6,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Website">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 13. Ajio Seller Management -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="ajio listings fashion seller register brand approvals catalog promotions">
+                    <div class="service-icon-wrapper"><i class="fas fa-socks"></i></div>
+                    <h3>Ajio Seller Management</h3>
+                    <p>Onboarding apparel and lifestyle catalogs on Ajio. Price calculators, CTR enhancement strategies, and ad run management.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,931</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 14. Branding Essentials -->
+                <div class="service-card-premium reveal stagger-2" data-category="design-development" data-search-keywords="branding design logo stationery guides style envelope card design vector">
+                    <div class="service-icon-wrapper"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Branding & Logo Identity</h3>
+                    <p>Unique branding suites, vector logos formats, stationery card layouts, brand style sheets, guidelines booklets, and 3D mockups.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹2,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Graphic Design">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 15. Shopclues Seller Management -->
+                <div class="service-card-premium reveal stagger-3" data-category="e-commerce" data-search-keywords="shopclues seller catalog pricing keywords claims ads optimization">
+                    <div class="service-icon-wrapper"><i class="fas fa-boxes"></i></div>
+                    <h3>Shopclues Management</h3>
+                    <p>Shopclues cataloging, price calculations, keyword listings, campaign setups, and inventory claims audit integrations.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹3,947</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 16. 360-Degree Growth Plan -->
+                <div class="service-card-premium reveal stagger-1" data-category="marketing" data-search-keywords="360 branding plan digital marketing SEO SMO setup sales growth holistic strategy">
+                    <div class="service-icon-wrapper"><i class="fas fa-rocket"></i></div>
+                    <h3>360-Degree Growth Plan</h3>
+                    <p>Holistic packages containing keyword SEO audits, social media ad setups, conversion pixels, and dual e-commerce marketplaces account setups.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹12,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SEO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 17. E-Commerce Web Dev -->
+                <div class="service-card-premium reveal stagger-2" data-category="design-development" data-search-keywords="e-commerce website development storefront cart checkout multi-vendor merchant ui ux code">
+                    <div class="service-icon-wrapper"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-Commerce Web Dev</h3>
+                    <p>Responsive design setups for multi-vendor or direct merchant storefronts. Integrated checkouts, cart systems, and database systems.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹14,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Website">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 18. JioMart Seller Management -->
+                <div class="service-card-premium reveal stagger-3" data-category="e-commerce" data-search-keywords="jiomart seller setup catalog pricing listings CTR optimization campaigns claims">
+                    <div class="service-icon-wrapper"><i class="fas fa-store-alt"></i></div>
+                    <h3>JioMart Seller Management</h3>
+                    <p>JioMart seller registration, product listings, image enhancements, pricing strategy calculations, and claim management.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,931</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 19. Etsy Store Management -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="etsy seller listings handmade optimization catalog keywords shipping support">
+                    <div class="service-icon-wrapper"><i class="fab fa-etsy"></i></div>
+                    <h3>Etsy Store Management</h3>
+                    <p>Etsy shop setup, keyword optimization for handcrafted items, shipping matrix setup, catalog listings, and global ad campaigns.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 20. Snapdeal Management -->
+                <div class="service-card-premium reveal stagger-2" data-category="e-commerce" data-search-keywords="snapdeal listings mapping packaging description fulfillment claims PPC">
+                    <div class="service-icon-wrapper"><i class="fas fa-box-open"></i></div>
+                    <h3>Snapdeal Management</h3>
+                    <p>Snapdeal registration, category mapping, keyword descriptions, images enhancements, PPC setup, and shipping claims management.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹3,947</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 21. Dropshipping Store Setup -->
+                <div class="service-card-premium reveal stagger-3" data-category="design-development" data-search-keywords="dropshipping setup products supply list store import custom ads wordpress shopify">
+                    <div class="service-icon-wrapper"><i class="fas fa-ship"></i></div>
+                    <h3>Dropshipping Store Setup</h3>
+                    <p>Custom e-commerce platforms (WordPress/Shopify) integrated with dropship supply channels, product imports, and target marketing ads.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹15,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="Website">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 22. eBay Seller Management -->
+                <div class="service-card-premium reveal stagger-1" data-category="e-commerce" data-search-keywords="ebay listings bulk turbolister auctiva SEO templates accounts management">
+                    <div class="service-icon-wrapper"><i class="fab fa-ebay"></i></div>
+                    <h3>eBay Seller Management</h3>
+                    <p>eBay bulk listing uploads (via Turbo Lister & Auctiva), custom shop templates layout, shipping configurations, and eBay SEO.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹5,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="No, I Am Not Sure.">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 23. YouTube Growth Essentials -->
+                <div class="service-card-premium reveal stagger-2" data-category="marketing" data-search-keywords="youtube growth video editing channel setup tags SEO descriptions monetization scripting">
+                    <div class="service-icon-wrapper"><i class="fab fa-youtube"></i></div>
+                    <h3>YouTube Growth Essentials</h3>
+                    <p>YouTube channel setup, video editing, custom high-CTR thumbnails design, keyword description tags SEO, and monetization scripting.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹60,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SMO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 24. Google Ads Management -->
+                <div class="service-card-premium reveal stagger-3" data-category="marketing" data-search-keywords="google ads PPC search network display performance max bid management conversions analytics">
+                    <div class="service-icon-wrapper"><i class="fab fa-google"></i></div>
+                    <h3>Google Ads Management</h3>
+                    <p>Search, Display, and Performance Max campaign setups. Bid optimizations, custom ad copies, and pixel conversion tracking.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹9,000</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SEO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- 25. Influencer Marketing -->
+                <div class="service-card-premium reveal stagger-1" data-category="marketing" data-search-keywords="influencer marketing nano micro macro campaigns scale content script reports">
+                    <div class="service-icon-wrapper"><i class="fas fa-bullseye"></i></div>
+                    <h3>Influencer Marketing</h3>
+                    <p>Reach customers at scale. Custom scripts and campaign setup with 10+ nano, micro, and macro creators with tracking statistics.</p>
+                    <div class="service-footer">
+                        <span class="price-start">Starting at ₹9,999</span>
+                        <button class="btn-service-action open-consultation-btn" data-service-select="SMO">Book Slot <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Empty state for services search -->
+            <div class="services-empty-state" id="services-empty-state" style="display: none;">
+                <i class="fas fa-search-minus empty-icon"></i>
+                <h3>No services found</h3>
+                <p>We couldn't find any services matching your search keywords. Try searching for general terms like "Amazon", "SEO", "Design", or "App".</p>
+                <button class="btn btn-consult" id="services-clear-search-btn">Reset Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Call to Action -->
+    <section class="blog-cta-section reveal">
+        <div class="container blog-cta-container">
+            <h2>Not Sure Which Solution Fits Your Brand?</h2>
+            <p>Schedule a call with one of our marketplace specialists to build a custom action plan.</p>
+            <button class="btn btn-consult open-consultation-btn"><i class="fas fa-hand-point-right"></i> Talk with an Expert</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h3 class="logo-accent">Cruzen Digital</h3>
+                <p>Expand your online presence with comprehensive marketing, marketplace management, and website design solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-group">
+                <div class="footer-links-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Team</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <a href="services.html?tab=e-commerce">Marketplace Management</a>
+                    <a href="services.html?tab=marketing">Digital Marketing</a>
+                    <a href="services.html?tab=design-development">Website Design</a>
+                    <a href="services.html?tab=marketing">360 Marketing Plans</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone-alt"></i> 08062180749</p>
+                    <p><i class="fas fa-envelope"></i> info@cruzendigital.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mahavir Enclave, New Delhi, 110045</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Cruzen Digital. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Wizard Modal (Vakilsearch Multi-step style) -->
+    <div id="consultation-modal" class="modal-overlay">
+        <div class="modal-container wizard-box">
+            <button class="modal-close" id="close-consultation-btn">&times;</button>
+            
+            <div class="wizard-header">
+                <h2>Get Free Consultation</h2>
+                <p>Choose your service and slot to talk with our team.</p>
+                
+                <div class="wizard-steps-indicator">
+                    <div class="wizard-steps-indicator-line-fill" id="wizard-line-fill"></div>
+                    <div class="step-indicator active" id="step-ind-1">
+                        <div class="step-indicator-node">1</div>
+                        <span>Choose Service</span>
+                    </div>
+                    <div class="step-indicator" id="step-ind-2">
+                        <div class="step-indicator-node">2</div>
+                        <span>Pick Slot</span>
+                    </div>
+                    <div class="step-indicator" id="step-ind-3">
+                        <div class="step-indicator-node">3</div>
+                        <span>Personal Info</span>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="consultation-form" action="consult.php" method="POST">
+                <input id="website" name="website" type="text" style="display: none;" value="">
+                
+                <div class="wizard-steps">
+                    <!-- Step 1: Services Selection -->
+                    <div class="wizard-step active" id="wizard-step-1">
+                        <h3>1/3 Take Your Business To A New Height With...</h3>
+                        <p class="step-sub">Select the primary service you require assistance with:</p>
+                        <div class="radio-grid">
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="SEO" checked>
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">SEO (Search Engine Optimization)</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="SMO">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">SMO (Social Media Optimization)</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Website">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Website Development</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Amazon">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Amazon Seller Management</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Flipkart">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Flipkart Seller Management</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="Graphic Design">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">Graphic Design Services</span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="service" value="No, I Am Not Sure.">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">No, I Am Not Sure.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Slot Selection -->
+                    <div class="wizard-step" id="wizard-step-2">
+                        <h3>2/3 Please Fill With Additional Info</h3>
+                        <p class="step-sub">Choose a convenient date and time for your consultation call:</p>
+                        <div class="form-group-row">
+                            <div class="form-field">
+                                <label for="inputdate">Select Date</label>
+                                <input type="date" id="inputdate" name="date" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="inputtime">Select Time Slot</label>
+                                <select id="inputtime" name="time" required>
+                                    <option value="" disabled selected>Select your time slot</option>
+                                    <option value="11:00 AM To 12:00 PM">11:00 AM To 12:00 PM</option>
+                                    <option value="12:00 PM To 1:00 PM">12:00 PM To 1:00 PM</option>
+                                    <option value="1:00 PM To 2:00 PM">1:00 PM To 2:00 PM</option>
+                                    <option value="2:00 PM To 3:00 PM">2:00 PM To 3:00 PM</option>
+                                    <option value="3:00 PM To 4:00 PM">3:00 PM To 4:00 PM</option>
+                                    <option value="4:00 PM To 5:00 PM">4:00 PM To 5:00 PM</option>
+                                    <option value="5:00 PM To 6:00 PM">5:00 PM To 6:00 PM</option>
+                                    <option value="6:00 PM To 7:00 PM">6:00 PM To 7:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Personal Information -->
+                    <div class="wizard-step" id="wizard-step-3">
+                        <h3>3/3 Personal Information</h3>
+                        <p class="step-sub">How can our expert reach out to you?</p>
+                        <div class="form-field">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-field">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">E-mail Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your business email" required>
+                            </div>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms" name="terms" value="yes" required>
+                            <label for="terms">Please accept Terms And Conditions?</label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Success Message -->
+                    <div class="wizard-step" id="wizard-step-success">
+                        <div class="success-screen">
+                            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                            <h3>Thank You!</h3>
+                            <p>Your free consultation slot has been booked. Our expert will contact you shortly on the phone number provided.</p>
+                            <button type="button" class="btn btn-primary-premium" id="success-close-btn">Close Window</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-footer">
+                    <button type="button" class="btn btn-outline" id="prev-step-btn" disabled>Previous</button>
+                    <button type="button" class="btn btn-consult" id="next-step-btn">Next</button>
+                    <button type="submit" class="btn btn-consult" id="submit-wizard-btn" style="display: none;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
