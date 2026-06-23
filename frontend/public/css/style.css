@@ -383,7 +383,9 @@ input, textarea, select { font: inherit; }
   gap: 6px;
   animation: iconFloat 3.5s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 .hero-icon {
   width: 52px;
@@ -1604,8 +1606,13 @@ a.detail-value:hover { color: var(--cyan-dark); }
   .why-right { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 24px; }
-  .footer-top { grid-template-columns: 1fr; gap: 36px; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .footer-socials { justify-content: center; }
+  .footer-links { align-items: center; }
+  .footer-link { text-align: center !important; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+  .footer-legal { justify-content: center; }
+  .footer-cta { margin: 20px auto 0; }
 }
 
 /* 480px */
@@ -2599,8 +2606,10 @@ body.loaded { opacity: 1; }
   .port-item:nth-child(2),
   .port-item:nth-child(5) { grid-row: span 1; }
   .testi-grid { grid-template-columns: 1fr; }
-  .faq-layout { grid-template-columns: 1fr; gap: 48px; }
-  .faq-left { position: static; }
+  .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+  .faq-left { position: static; text-align: center; }
+  .faq-left .faq-sub { max-width: 100%; }
+  .faq-cta-wrap { display: flex; justify-content: center; }
   .contact-strip-inner { flex-direction: column; text-align: center; padding: 40px 32px; }
   .cs-right { flex-direction: column; }
 }
@@ -3451,6 +3460,11 @@ body.loaded { opacity: 1; }
 @media (max-width: 600px) {
   .pfp-stats { gap: 24px; }
   .pfp-stat-n { font-size: 22px; }
+  .pfp-hero .container { text-align: center; }
+  .pfp-headline { font-size: clamp(28px,8vw,40px); }
+  .pfp-sub { max-width: 100%; margin-bottom: 24px; }
+  .pfp-stats { justify-content: center; }
+  .pfp-filters { justify-content: center; }
 }
 
 /* Hero image */

@@ -54,7 +54,7 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button — stacked above chatbot FAB */}
       <a
         href="https://wa.me/919560310393"
         target="_blank"
@@ -62,12 +62,12 @@ export default function Chatbot() {
         title="Chat on WhatsApp"
         className="wa-fab"
         style={{
-          position: 'fixed', bottom: 24, right: 96, zIndex: 9999,
-          width: 56, height: 56, borderRadius: '50%',
+          position: 'fixed', bottom: 92, right: 24, zIndex: 9999,
+          width: 52, height: 52, borderRadius: '50%',
           background: '#25D366',
           border: 'none', cursor: 'pointer', boxShadow: '0 8px 24px rgba(37,211,102,0.45)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '1.5rem', color: '#fff', textDecoration: 'none',
+          fontSize: '1.4rem', color: '#fff', textDecoration: 'none',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         }}
         onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(37,211,102,0.55)'; }}
@@ -82,12 +82,12 @@ export default function Chatbot() {
         className="chatbot-fab"
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
-          width: 60, height: 60, borderRadius: '50%',
+          width: 56, height: 56, borderRadius: '50%',
           background: 'linear-gradient(135deg, #15d8e1, #15d8e1)',
           border: 'none', cursor: 'pointer', boxShadow: '0 8px 24px rgba(21,216,225,0.4)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-          fontSize: '1.4rem', color: '#fff',
+          fontSize: '1.3rem', color: '#fff',
         }}
         onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
         onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -105,7 +105,7 @@ export default function Chatbot() {
       {/* Chat Window */}
       {open && (
         <div style={{
-          position: 'fixed', bottom: 94, right: 24, zIndex: 9999,
+          position: 'fixed', bottom: 90, right: 24, zIndex: 9999,
           width: 360, maxWidth: 'calc(100vw - 32px)', maxHeight: 520,
           background: '#fff', borderRadius: 20, boxShadow: '0 20px 60px rgba(2,43,80,0.18)',
           display: 'flex', flexDirection: 'column', overflow: 'hidden',

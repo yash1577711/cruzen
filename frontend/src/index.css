@@ -1252,6 +1252,8 @@ a.ftr-contact-item:hover { color: #15d8e1; }
   .wizard-steps-indicator::before { left: 10px; right: 10px; }
   .wizard-steps-indicator-line-fill { left: 10px; }
   .success-screen { padding: 28px 20px; }
+  .modal-overlay { padding: 12px; align-items: center; justify-content: center; }
+  .modal-container { width: 100% !important; max-height: 95dvh; }
 }
 
 /* ─────────────────────────────────────────

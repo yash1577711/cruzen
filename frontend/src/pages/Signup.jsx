@@ -111,6 +111,11 @@ export default function Signup() {
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px 16px', position: 'relative', zIndex: 10 }}>
         <div style={{ width: '100%', maxWidth: 480, opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.55s cubic-bezier(0.16,1,0.3,1)' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.82rem', color: 'var(--text-light)', fontWeight: 600, marginBottom: 16, textDecoration: 'none', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--secondary-color)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-light)'}>
+            <i className="fas fa-arrow-left" style={{ fontSize: '0.75rem' }} /> Back to Home
+          </Link>
 
           {/* Step 3: Success */}
           {step === 3 ? (

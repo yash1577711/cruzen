@@ -157,7 +157,7 @@ export default function AiAudit() {
                   <div style={{ flex: 1, position: 'relative' }}>
                     <i className={`${selectedPlatform?.icon} fa-sm`} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: selectedPlatform?.color, fontSize: '1rem' }} />
                     <input
-                      type="url" value={url} onChange={e => setUrl(e.target.value)} required
+                      type="text" value={url} onChange={e => setUrl(e.target.value)} required
                       placeholder={selectedPlatform?.hint || 'https://…'}
                       style={{ width: '100%', padding: '13px 16px 13px 42px', border: '2px solid #e2e8f0', borderRadius: 12, fontSize: '0.95rem', fontFamily: 'inherit', boxSizing: 'border-box', outline: 'none' }}
                       onFocus={e => e.target.style.borderColor = '#00B4CC'}
