@@ -219,6 +219,16 @@ const WEBSITE_SERVICES = [
       { name: 'Premium',  price: 89999,  original: 145999, popular: false, features: ['150 SKU product listings','Complete Shopify store setup','Premium theme design & customization','Full integration suite','Advanced Shopify SEO','Migration + app development','Shopify Plus development','Priority maintenance & support','Custom checkout & payment flows'] },
     ],
   },
+  {
+    id: 'automation', icon: 'fa-solid fa-robot', title: 'Business Automation', tag: 'AI-Powered',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&q=80&auto=format&fit=crop',
+    desc: 'Automate repetitive business workflows — WhatsApp bots, CRM integration, email sequences & lead funnels.',
+    plans: [
+      { name: 'Basic',    price: 14999, original: 19999, popular: false, features: ['WhatsApp Business API setup','Automated reply bot (up to 10 flows)','Lead capture form integration','Email drip sequence (3 emails)','Basic CRM integration','Monthly performance report'] },
+      { name: 'Standard', price: 24999, original: 32999, popular: true,  features: ['WhatsApp Business API + catalog setup','Advanced chatbot (up to 25 flows)','Lead capture + CRM auto-sync','Email drip sequence (7 emails)','Full CRM integration (HubSpot / Zoho)','WhatsApp broadcast campaigns','Bi-weekly performance reports','Dedicated automation manager'] },
+      { name: 'Premium',  price: 44999, original: 59999, popular: false, features: ['WhatsApp Business API + full catalog','Unlimited automation flows','Multi-platform chatbot (WA + Instagram + website)','Complete CRM integration & pipeline setup','Email + WhatsApp drip sequences','AI-powered lead scoring','Weekly performance reports','Custom API integrations','Priority support & quarterly strategy review'] },
+    ],
+  },
 ];
 
 const MP_BRANDING_SERVICES = [

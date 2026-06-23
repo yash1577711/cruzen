@@ -2607,9 +2607,13 @@ body.loaded { opacity: 1; }
   .port-item:nth-child(5) { grid-row: span 1; }
   .testi-grid { grid-template-columns: 1fr; }
   .faq-layout { grid-template-columns: 1fr; gap: 32px; }
-  .faq-left { position: static; text-align: center; }
-  .faq-left .faq-sub { max-width: 100%; }
+  .faq-left { position: static; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .faq-left .faq-sub { max-width: 100%; text-align: center; }
+  .faq-left .section-title { text-align: center; }
   .faq-cta-wrap { display: flex; justify-content: center; }
+  .faq-right, .faq-list, .faq-item { width: 100%; }
+  .faq-q { display: flex !important; justify-content: space-between !important; width: 100% !important; }
+  .faq-icon { flex-shrink: 0; margin-left: auto; }
   .contact-strip-inner { flex-direction: column; text-align: center; padding: 40px 32px; }
   .cs-right { flex-direction: column; }
 }
