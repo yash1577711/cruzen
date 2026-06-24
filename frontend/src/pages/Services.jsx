@@ -379,16 +379,7 @@ export default function Services() {
   const canBuy = !user || user.role === 'user';
 
   const handleBuyNow = (plan) => {
-    if (!user) {
-      localStorage.setItem('cruzen_buy_intent', JSON.stringify(plan));
-      navigate(`/login?redirect=/services?service=${svId || 'amazon'}`);
-      return;
-    }
-    if (!canBuy) {
-      toast.info('Service purchases are available for clients only.', { toastId: 'staff-buy-block' });
-      return;
-    }
-    setPayModal(plan);
+    navigate(`/services/${selectedSvc.id}?plan=${encodeURIComponent(plan.planName)}`);
   };
 
   const submitPayUForm = (payuUrl, params) => {
