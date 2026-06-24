@@ -9,43 +9,92 @@ import Chatbot from '../components/Chatbot.jsx';
 import api from '../api/axios.js';
 import { findService, categoryOf, journeySteps, keyBenefits } from '../data/services.js';
 
-/* ── animated journey step ── */
-function JourneyStep({ step, index, total }) {
+/* ── useReveal: fires once when element enters viewport ── */
+function useReveal(threshold = 0.2) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.25 }
+      { threshold }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
+  return [ref, visible];
+}
 
+/* ── animated counter ── */
+function Counter({ target, suffix = '' }) {
+  const [val, setVal] = useState(0);
+  const [ref, visible] = useReveal(0.5);
+  useEffect(() => {
+    if (!visible) return;
+    const num = parseInt(target.replace(/\D/g, ''), 10);
+    if (!num) { setVal(target); return; }
+    let start = 0;
+    const step = Math.ceil(num / 40);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= num) { setVal(target); clearInterval(timer); }
+      else setVal(start + suffix);
+    }, 30);
+    return () => clearInterval(timer);
+  }, [visible, target, suffix]);
+  return <span ref={ref}>{visible ? val : 0}</span>;
+}
+
+/* ── benefit card with reveal ── */
+function BenefitCard({ b, index, color }) {
+  const [ref, visible] = useReveal(0.15);
   return (
     <div
       ref={ref}
-      className={`sl-journey-step${visible ? ' sl-visible' : ''}`}
-      style={{ transitionDelay: `${index * 0.12}s` }}
+      className={`sl-benefit-card${visible ? ' sl-visible' : ''}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
     >
-      <div className="sl-step-num">{index + 1}</div>
-      <div className="sl-step-icon">
-        <i className={step.icon} />
+      <div className="sl-benefit-icon" style={{ background: `${color}15`, color }}>
+        <i className={b.icon} />
       </div>
-      <h4 className="sl-step-title">{step.title}</h4>
-      <p className="sl-step-desc">{step.desc}</p>
-      {index < total - 1 && <div className="sl-step-connector" />}
+      <h4 className="sl-benefit-title">{b.title}</h4>
+      <p className="sl-benefit-desc">{b.desc}</p>
     </div>
   );
 }
 
-/* ── plan card ── */
-function PlanCard({ plan, svcTitle, onConsult, onBuy, canBuy }) {
+/* ── journey step ── */
+function JourneyStep({ step, index, total, color }) {
+  const [ref, visible] = useReveal(0.15);
   return (
-    <div className={`sl-plan${plan.popular ? ' sl-plan-popular' : ''}`}>
+    <div
+      ref={ref}
+      className={`sl-journey-step${visible ? ' sl-visible' : ''}`}
+      style={{ transitionDelay: `${index * 0.15}s` }}
+    >
+      <div className="sl-step-num" style={{ background: visible ? color : '#d1d5db', transition: `background 0.4s ${index * 0.15}s` }}>{index + 1}</div>
+      <div className="sl-step-icon" style={{ color }}>
+        <i className={step.icon} />
+      </div>
+      <h4 className="sl-step-title">{step.title}</h4>
+      <p className="sl-step-desc">{step.desc}</p>
+      {index < total - 1 && (
+        <div className={`sl-step-connector${visible ? ' sl-connector-drawn' : ''}`} style={{ '--connector-color': color, transitionDelay: `${index * 0.15 + 0.3}s` }} />
+      )}
+    </div>
+  );
+}
+
+/* ── plan card with reveal ── */
+function PlanCard({ plan, svcTitle, onConsult, onBuy, canBuy, index }) {
+  const [ref, visible] = useReveal(0.1);
+  return (
+    <div
+      ref={ref}
+      className={`sl-plan${plan.popular ? ' sl-plan-popular' : ''}${visible ? ' sl-visible' : ''}`}
+      style={{ transitionDelay: `${index * 0.12}s` }}
+    >
       {plan.popular && <div className="sl-plan-badge">Most Popular</div>}
       <div className="sl-plan-name">{plan.name}</div>
       <div className="sl-plan-pricing">
@@ -92,8 +141,9 @@ export default function ServiceLanding() {
   const [preSelectedService, setPreSelectedService] = useState(null);
   const [payModal, setPayModal] = useState(null);
   const [paying, setPaying] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
-  useEffect(() => { window.scrollTo(0, 0); }, [id]);
+  useEffect(() => { window.scrollTo(0, 0); setHeroLoaded(false); const t = setTimeout(() => setHeroLoaded(true), 80); return () => clearTimeout(t); }, [id]);
 
   useEffect(() => {
     if (!user) return;
@@ -119,7 +169,6 @@ export default function ServiceLanding() {
   }
 
   const canBuy = !user || user.role === 'user';
-
   const openConsult = (service = null) => { setPreSelectedService(service); setConsultOpen(true); };
 
   const handleBuyNow = (plan) => {
@@ -128,10 +177,7 @@ export default function ServiceLanding() {
       navigate(`/login?redirect=/services/${id}`);
       return;
     }
-    if (!canBuy) {
-      toast.info('Service purchases are available for clients only.', { toastId: 'staff-buy-block' });
-      return;
-    }
+    if (!canBuy) { toast.info('Service purchases are available for clients only.', { toastId: 'staff-buy-block' }); return; }
     setPayModal(plan);
   };
 
@@ -141,9 +187,7 @@ export default function ServiceLanding() {
     form.action = payuUrl;
     Object.entries(params).forEach(([key, value]) => {
       const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = String(value ?? '');
+      input.type = 'hidden'; input.name = key; input.value = String(value ?? '');
       form.appendChild(input);
     });
     document.body.appendChild(form);
@@ -154,37 +198,21 @@ export default function ServiceLanding() {
     if (!payModal || paying) return;
     setPaying(true);
     try {
-      const createRes = await api.post('/orders/create', {
-        serviceName: payModal.service,
-        planName: payModal.planName,
-        amount: payModal.price,
-      });
+      const createRes = await api.post('/orders/create', { serviceName: payModal.service, planName: payModal.planName, amount: payModal.price });
       const { order, razorpayOrderId, testMode: rzpTestMode } = createRes.data;
       try {
         const payuRes = await api.post('/orders/payu/init', { orderId: order._id });
         const { payuUrl, params, testMode: payuTestMode } = payuRes.data;
         if (!payuTestMode) { setPayModal(null); submitPayUForm(payuUrl, params); return; }
-      } catch (payuErr) {
-        console.warn('PayU fallback:', payuErr.message);
-      }
-      await api.post('/orders/verify', {
-        razorpayOrderId,
-        razorpayPaymentId: `demo_pay_${Date.now()}`,
-        razorpaySignature: `demo_sig_${Date.now()}`,
-        orderId: order._id,
-        testMode: rzpTestMode !== false,
-      });
+      } catch (payuErr) { console.warn('PayU fallback:', payuErr.message); }
+      await api.post('/orders/verify', { razorpayOrderId, razorpayPaymentId: `demo_pay_${Date.now()}`, razorpaySignature: `demo_sig_${Date.now()}`, orderId: order._id, testMode: rzpTestMode !== false });
       setPayModal(null);
       toast.success('Payment confirmed! Your order is now active.', { toastId: 'pay-success' });
       navigate('/dashboard?tab=tracker');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Payment failed. Please try again.', { toastId: 'pay-error' });
-    } finally {
-      setPaying(false);
-    }
+    } finally { setPaying(false); }
   };
-
-  const popularPlan = svc.plans.find(p => p.popular) || svc.plans[1] || svc.plans[0];
 
   return (
     <>
@@ -192,9 +220,9 @@ export default function ServiceLanding() {
 
       {/* ══ HERO ══ */}
       <section className="sl-hero">
-        <img src={svc.image} alt={svc.title} className="sl-hero-img" />
+        <img src={svc.image} alt={svc.title} className="sl-hero-img sl-hero-zoom" />
         <div className="sl-hero-overlay" />
-        <div className="sl-hero-content">
+        <div className={`sl-hero-content${heroLoaded ? ' sl-hero-loaded' : ''}`}>
           <div className="sl-hero-breadcrumb">
             <Link to="/services">All Services</Link>
             <span>/</span>
@@ -204,7 +232,7 @@ export default function ServiceLanding() {
           <h1 className="sl-hero-title">{svc.title}</h1>
           <p className="sl-hero-desc">{svc.desc}</p>
           <div className="sl-hero-actions">
-            <button className="sl-hero-btn-primary" onClick={() => { document.getElementById('sl-pricing').scrollIntoView({ behavior: 'smooth' }); }}>
+            <button className="sl-hero-btn-primary" onClick={() => document.getElementById('sl-pricing').scrollIntoView({ behavior: 'smooth' })}>
               View Plans & Pricing
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12l7 7 7-7" /></svg>
             </button>
@@ -213,8 +241,7 @@ export default function ServiceLanding() {
             </button>
           </div>
         </div>
-        {/* floating price pill */}
-        <div className="sl-hero-price-pill">
+        <div className={`sl-hero-price-pill${heroLoaded ? ' sl-pill-loaded' : ''}`}>
           <span className="sl-hero-price-from">Starting from</span>
           <span className="sl-hero-price-val">₹{Math.min(...svc.plans.map(p => p.price)).toLocaleString('en-IN')}</span>
           <span className="sl-hero-price-period">/month</span>
@@ -224,13 +251,15 @@ export default function ServiceLanding() {
       {/* ══ STATS BAR ══ */}
       <div className="sl-stats-bar">
         {[
-          { num: '500+', label: 'Happy Clients' },
-          { num: '5+',   label: 'Years Experience' },
-          { num: '98%',  label: 'Client Retention' },
-          { num: '7',    label: 'Days Onboarding' },
+          { num: '500', suffix: '+', label: 'Happy Clients' },
+          { num: '5',   suffix: '+', label: 'Years Experience' },
+          { num: '98',  suffix: '%', label: 'Client Retention' },
+          { num: '7',   suffix: '',  label: 'Days Onboarding' },
         ].map((s, i) => (
           <div key={i} className="sl-stat">
-            <span className="sl-stat-num" style={{ color: cat.color }}>{s.num}</span>
+            <span className="sl-stat-num" style={{ color: cat.color }}>
+              <Counter target={s.num + s.suffix} suffix={s.suffix} />
+            </span>
             <span className="sl-stat-label">{s.label}</span>
           </div>
         ))}
@@ -246,13 +275,7 @@ export default function ServiceLanding() {
           </div>
           <div className="sl-benefits-grid">
             {benefits.map((b, i) => (
-              <div key={i} className="sl-benefit-card">
-                <div className="sl-benefit-icon" style={{ background: `${cat.color}15`, color: cat.color }}>
-                  <i className={b.icon} />
-                </div>
-                <h4 className="sl-benefit-title">{b.title}</h4>
-                <p className="sl-benefit-desc">{b.desc}</p>
-              </div>
+              <BenefitCard key={i} b={b} index={i} color={cat.color} />
             ))}
           </div>
         </div>
@@ -268,7 +291,7 @@ export default function ServiceLanding() {
           </div>
           <div className="sl-journey-track">
             {steps.map((step, i) => (
-              <JourneyStep key={i} step={step} index={i} total={steps.length} />
+              <JourneyStep key={i} step={step} index={i} total={steps.length} color={cat.color} />
             ))}
           </div>
         </div>
@@ -284,14 +307,7 @@ export default function ServiceLanding() {
           </div>
           <div className="sl-plans-grid">
             {svc.plans.map((plan, i) => (
-              <PlanCard
-                key={i}
-                plan={plan}
-                svcTitle={svc.title}
-                onConsult={openConsult}
-                onBuy={handleBuyNow}
-                canBuy={canBuy}
-              />
+              <PlanCard key={i} plan={plan} index={i} svcTitle={svc.title} onConsult={openConsult} onBuy={handleBuyNow} canBuy={canBuy} />
             ))}
           </div>
         </div>
@@ -306,12 +322,8 @@ export default function ServiceLanding() {
               <p>Book a free 30-min strategy call. We'll audit your current setup and recommend the right plan — no commitment, no pressure.</p>
             </div>
             <div className="sl-cta-actions">
-              <button className="sl-cta-btn-primary" onClick={() => openConsult(svc.title)}>
-                Book Free Strategy Call →
-              </button>
-              <Link to="/services" className="sl-cta-btn-ghost">
-                Browse All Services
-              </Link>
+              <button className="sl-cta-btn-primary" onClick={() => openConsult(svc.title)}>Book Free Strategy Call →</button>
+              <Link to="/services" className="sl-cta-btn-ghost">Browse All Services</Link>
             </div>
           </div>
         </div>
@@ -326,9 +338,7 @@ export default function ServiceLanding() {
         <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }} onClick={() => !paying && setPayModal(null)} />
           <div style={{ position: 'relative', background: '#fff', borderRadius: 20, padding: '36px 32px', maxWidth: 440, width: '100%', boxShadow: '0 24px 80px rgba(0,0,0,0.18)', textAlign: 'center' }}>
-            {!paying && (
-              <button onClick={() => setPayModal(null)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: '#888', fontSize: 20, lineHeight: 1 }}>✕</button>
-            )}
+            {!paying && <button onClick={() => setPayModal(null)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: '#888', fontSize: 20 }}>✕</button>}
             <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'linear-gradient(135deg, #00B4CC22, #00CC8822)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4CC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><line x1="2" y1="10" x2="22" y2="10" /></svg>
             </div>
@@ -351,14 +361,7 @@ export default function ServiceLanding() {
             <div style={{ display: 'flex', gap: 12 }}>
               <button onClick={() => setPayModal(null)} disabled={paying} style={{ flex: 1, padding: '12px 0', borderRadius: 10, border: '1.5px solid #ddd', background: '#fff', color: '#555', fontWeight: 600, cursor: paying ? 'not-allowed' : 'pointer', fontSize: 14 }}>Cancel</button>
               <button onClick={handleProceedToPayment} disabled={paying} style={{ flex: 2, padding: '12px 0', borderRadius: 10, border: 'none', background: paying ? '#99d9e5' : 'linear-gradient(135deg, #00B4CC, #00CC88)', color: '#fff', fontWeight: 700, cursor: paying ? 'not-allowed' : 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                {paying ? (
-                  <><span style={{ width: 16, height: 16, border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite' }} />Processing…</>
-                ) : (
-                  <>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                    Pay ₹{payModal.price.toLocaleString('en-IN')}
-                  </>
-                )}
+                {paying ? (<><span style={{ width: 16, height: 16, border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', borderRadius: '50%', display: 'inline-block', animation: 'spin 0.7s linear infinite' }} />Processing…</>) : (<><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>Pay ₹{payModal.price.toLocaleString('en-IN')}</>)}
               </button>
             </div>
           </div>
