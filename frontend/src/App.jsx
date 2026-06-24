@@ -29,6 +29,7 @@ import AdminRequirements from './pages/admin/AdminRequirements.jsx';
 import AdminOnboarding from './pages/admin/AdminOnboarding.jsx';
 import AdminStaff from './pages/admin/AdminStaff.jsx';
 import AiAudit from './pages/AiAudit.jsx';
+import ServiceLanding from './pages/ServiceLanding.jsx';
 import PosHeadDashboard from './pages/user/PosHeadDashboard.jsx';
 import TeamMemberDashboard from './pages/user/TeamMemberDashboard.jsx';
 import AuthCallback from './pages/AuthCallback.jsx';
@@ -52,6 +53,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/services/:id" element={<ServiceLanding />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
