@@ -101,7 +101,6 @@ export default function ServiceLanding() {
   /* reset on route change */
   useEffect(() => {
     window.scrollTo(0, 0);
-    ScrollTrigger.getAll().forEach(t => t.kill());
     const plan = svc?.plans.find(p => p.name === planParam)
               || svc?.plans.find(p => p.popular)
               || svc?.plans[0];
@@ -204,7 +203,9 @@ export default function ServiceLanding() {
       });
     });
 
-    return () => ctx.revert();
+    /* Refresh after images shift layout */
+    const t = setTimeout(() => ScrollTrigger.refresh(), 600);
+    return () => { clearTimeout(t); ctx.revert(); };
   }, [id]);
 
   /* ── not found ── */
