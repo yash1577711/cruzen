@@ -6,7 +6,7 @@ exports.getMyTrackers = async (req, res) => {
   try {
     const trackers = await ServiceTracker.find({ user: req.user._id })
       .populate('service', 'title icon category plans')
-      .populate('order', 'planName amount invoiceNumber serviceName')
+      .populate('order', 'planName amount invoiceNumber serviceName duration quantity endDate')
       .populate('assignedTo', 'name email')
       .populate('updates.updatedBy', 'name role')
       .sort('-createdAt');
@@ -20,7 +20,7 @@ exports.getTrackerById = async (req, res) => {
   try {
     const tracker = await ServiceTracker.findById(req.params.id)
       .populate('service', 'title icon category description')
-      .populate('order', 'planName amount invoiceNumber status')
+      .populate('order', 'planName amount invoiceNumber status duration quantity endDate')
       .populate('user', 'name email')
       .populate('assignedTo', 'name email role')
       .populate('updates.updatedBy', 'name role');
@@ -48,7 +48,7 @@ exports.getAllTrackers = async (req, res) => {
     const trackers = await ServiceTracker.find(query)
       .populate('service', 'title icon category')
       .populate('user', 'name email phone')
-      .populate({ path: 'order', select: 'planName amount invoiceNumber posHead teamMembers', populate: [{ path: 'posHead', select: 'name email' }, { path: 'teamMembers', select: 'name' }] })
+      .populate({ path: 'order', select: 'planName amount invoiceNumber posHead teamMembers duration quantity endDate', populate: [{ path: 'posHead', select: 'name email' }, { path: 'teamMembers', select: 'name' }] })
       .populate('assignedTo', 'name email')
       .sort('-createdAt')
       .skip((page - 1) * limit)

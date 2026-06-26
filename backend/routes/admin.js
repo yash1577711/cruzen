@@ -34,7 +34,7 @@ router.patch('/orders/:orderId/assign-pos', async (req, res) => {
     // Notify POS head (email + in-app)
     if (posHead.email) {
       const trans = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587, secure: false, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
-      trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_USER}>`, to: posHead.email, subject: `New Project Assigned: ${order.service?.title}`, html: `<p>Hello ${posHead.name},<br/>You have been assigned as Project Head for <strong>${order.service?.title}</strong> (${order.planName} plan) for client <strong>${order.user?.name}</strong>.<br/>Log in to your dashboard to view details.</p>` }).catch(console.error);
+      trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_FROM}>`, to: posHead.email, subject: `New Project Assigned: ${order.service?.title}`, html: `<p>Hello ${posHead.name},<br/>You have been assigned as Project Head for <strong>${order.service?.title}</strong> (${order.planName} plan) for client <strong>${order.user?.name}</strong>.<br/>Log in to your dashboard to view details.</p>` }).catch(console.error);
     }
     notificationService.send({
       recipient: posHead._id,
@@ -116,20 +116,20 @@ posRouter.post('/pos/add-member', async (req, res) => {
       });
       const trans = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587, secure: false, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
       trans.sendMail({
-        from: `"Cruzen Digital" <${process.env.SMTP_USER}>`,
+        from: `"Cruzen Digital" <${process.env.SMTP_FROM}>`,
         to: email,
         subject: 'You\'ve been invited to join Cruzen Digital',
         html: `<p>Hello,<br/><strong>${req.user.name}</strong> has added you to a project on Cruzen Digital.<br/>Your temporary credentials:<br/>Email: <strong>${email}</strong><br/>Password: <strong>${tempPassword}</strong><br/>Please log in at <a href="${process.env.FRONTEND_URL}/login">${process.env.FRONTEND_URL}/login</a> and change your password.</p>`,
       }).catch(console.error);
     }
-    if (order.teamMembers.includes(member._id)) return res.status(400).json({ success: false, message: 'Member already in this project.' });
+    if (order.teamMembers.map(m => m.toString()).includes(member._id.toString())) return res.status(400).json({ success: false, message: 'Member already in this project.' });
     order.teamMembers.push(member._id);
     await order.save();
     const ordWithService = await Order.findById(order._id).populate('service', 'title').populate('user', 'name');
     const serviceTitle = ordWithService?.service?.title || order.serviceName || 'a project';
     // Notify member (email + in-app)
     const trans = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587, secure: false, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
-    trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_USER}>`, to: member.email, subject: `You've been added to ${serviceTitle}`, html: `<p>Hello ${member.name},<br/>You have been added to <strong>${serviceTitle}</strong> by ${req.user.name}. Log in to view your assignments.</p>` }).catch(console.error);
+    trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_FROM}>`, to: member.email, subject: `You've been added to ${serviceTitle}`, html: `<p>Hello ${member.name},<br/>You have been added to <strong>${serviceTitle}</strong> by ${req.user.name}. Log in to view your assignments.</p>` }).catch(console.error);
     notificationService.send({
       recipient: member._id,
       type: 'team_member_added',

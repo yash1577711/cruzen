@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Static pages -->
+  <url><loc>https://cruzendigital.us.cc/</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services</loc><changefreq>weekly</changefreq><priority>0.9</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/ai-audit</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+
+  <!-- Marketplace services -->
+  <url><loc>https://cruzendigital.us.cc/services/amazon</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/flipkart</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/meesho</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/ajio</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/myntra</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/nyka</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/snapdeal</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/ebay</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/etsy</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-26</lastmod></url>
+
+  <!-- Digital marketing services -->
+  <url><loc>https://cruzendigital.us.cc/services/smo</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/seo</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/smm</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/google-ads</loc><changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/youtube</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/influencer</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+
+  <!-- Website services -->
+  <url><loc>https://cruzendigital.us.cc/services/website-design</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/ecommerce</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/shopify</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+
+  <!-- 360° management -->
+  <url><loc>https://cruzendigital.us.cc/services/automation</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/mp-branding</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/branding</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://cruzendigital.us.cc/services/360</loc><changefreq>monthly</changefreq><priority>0.85</priority><lastmod>2026-06-26</lastmod></url>
+
+</urlset>

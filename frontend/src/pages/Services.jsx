@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { toast } from 'react-toastify';
 import Header from '../components/Header.jsx';
@@ -331,15 +332,15 @@ export default function Services() {
   const navigate = useNavigate();
   const [consultOpen, setConsultOpen] = useState(false);
   const [preSelectedService, setPreSelectedService] = useState(null);
-  const [openCats, setOpenCats] = useState({ marketplace: true, digital: false, influencer: false, website: false, 'mp-branding': false, branding: false, '360': false });
+  const [openCats, setOpenCats] = useState({});
   const [mobileOpen, setMobileOpen] = useState(false);
   const [customImages, setCustomImages] = useState({});
   const [payModal, setPayModal] = useState(null);
   const [paying, setPaying] = useState(false);
 
-  // resolve selectedService from URL
+  // resolve selectedService from URL — null if no URL param
   const svId = searchParams.get('service') || searchParams.get('tab');
-  const defaultSvc = ALL_FLAT.find(s => s.id === svId) || ALL_FLAT[0];
+  const defaultSvc = ALL_FLAT.find(s => s.id === svId) || null;
   const [selectedSvc, setSelectedSvc] = useState(defaultSvc);
 
   // helper: get effective image for a service
@@ -445,13 +446,23 @@ export default function Services() {
 
   return (
     <>
+      <Helmet>
+        <title>Digital Marketing Services — SEO, Meta Ads, Amazon & More | Cruzen Digital</title>
+        <meta name="description" content="Browse all Cruzen Digital services: SEO, Meta Ads, Google Ads, Amazon & marketplace management, web design, and 360° brand growth. Plans from ₹4,999/mo." />
+        <link rel="canonical" href="https://cruzendigital.us.cc/services" />
+        <meta property="og:title" content="Our Services | Cruzen Digital" />
+        <meta property="og:url" content="https://cruzendigital.us.cc/services" />
+      </Helmet>
+
+      <h1 className="sr-only">Digital Marketing Services — SEO, Meta Ads, Amazon Management & More | Cruzen Digital</h1>
+
       <Header openConsultation={() => openConsult()} />
 
       {/* ── Mobile: service selector button ── */}
       <div className="sv2-mobile-trigger">
         <button onClick={() => setMobileOpen(o => !o)} className="sv2-mobile-btn">
-          <i className={`fa-solid fa-${selectedSvc.icon?.match(/fa-(\S+)$/)?.[1] || 'list'}`} style={{ marginRight: 8 }} />
-          {selectedSvc.title}
+          <i className={`fa-solid fa-${selectedSvc?.icon?.match(/fa-(\S+)$/)?.[1] || 'list'}`} style={{ marginRight: 8 }} />
+          {selectedSvc?.title || 'Browse Services'}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M6 9l6 6 6-6"/></svg>
         </button>
       </div>
@@ -480,7 +491,7 @@ export default function Services() {
                     {cat.services.map(svc => (
                       <button
                         key={svc.id}
-                        className={`sv2-svc-item${selectedSvc.id === svc.id ? ' active' : ''}`}
+                        className={`sv2-svc-item${selectedSvc?.id === svc.id ? ' active' : ''}`}
                         onClick={() => selectService(svc)}
                       >
                         <div className="sv2-svc-thumb" style={{ background: `${cat.color}1a`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -490,7 +501,7 @@ export default function Services() {
                           <span className="sv2-svc-name">{svc.title}</span>
                           <span className="sv2-svc-tag" style={{ color: cat.color }}>{svc.tag}</span>
                         </div>
-                        {selectedSvc.id === svc.id && (
+                        {selectedSvc?.id === svc.id && (
                           <div className="sv2-svc-active-dot" style={{ background: cat.color, boxShadow: `0 0 6px ${cat.color}80` }} />
                         )}
                       </button>
@@ -504,6 +515,15 @@ export default function Services() {
 
         {/* ── RIGHT PANEL ── */}
         <main className="sv2-panel">
+          {!selectedSvc ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: 420, textAlign: 'center', padding: '60px 32px' }}>
+              <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'linear-gradient(135deg,#15D8E115,#6366f115)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
+                <i className="fa-solid fa-grid-2" style={{ fontSize: 32, color: '#15D8E1' }} />
+              </div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0a0f2e', margin: '0 0 12px' }}>Browse our services</h2>
+              <p style={{ color: '#64748b', fontSize: 15, maxWidth: 340, lineHeight: 1.65, margin: 0 }}>Select a category from the left panel and pick a service to view plans, pricing, and details.</p>
+            </div>
+          ) : (<>
           {/* Plans — shown FIRST so user sees pricing immediately */}
           <div className="sv2-plans-header">
             <h3>Choose Your Plan</h3>
@@ -543,6 +563,7 @@ export default function Services() {
               Book Free Consultation →
             </button>
           </div>
+          </>)}
         </main>
       </div>
 

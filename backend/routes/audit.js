@@ -145,6 +145,79 @@ function generateMockReport(platform, url) {
         ]},
       ]},
     ],
+    facebook: [
+      { title: 'Facebook Page Audit', sections: [
+        { title: 'Page Setup & Completeness', score: 56, issues: [
+          { severity: 'high', title: 'Page category not optimized', description: 'Your Facebook page is not categorized correctly, reducing discoverability in local and interest-based searches.', recommendation: 'Go to Page Settings > Page Info and select the most specific category for your business (e.g. "Digital Marketing Agency").' },
+          { severity: 'high', title: 'Missing page description and services', description: 'The About section and Services tab are either empty or lack key information.', recommendation: 'Write a 200-character keyword-rich description, list all services, add business hours, website, and location.' },
+          { severity: 'medium', title: 'CTA button not configured', description: 'The page CTA button (under the cover photo) is set to the default or points to no destination.', recommendation: 'Set the CTA button to "Send Message", "Book Now", or "Contact Us" matching your primary conversion goal.' },
+          { severity: 'low', title: 'Cover photo not updated', description: 'Cover photo appears outdated or is missing promotional/seasonal content.', recommendation: 'Update cover photo seasonally with an offer or brand visual — ideal size: 820×312px.' },
+        ]},
+        { title: 'Content & Posting Strategy', score: 49, issues: [
+          { severity: 'high', title: 'Low organic reach due to posting frequency', description: 'Pages posting less than 3 times per week see a 40-60% reduction in average organic reach.', recommendation: 'Maintain 5-7 posts per week: mix of video, image, link, and text posts to signal activity to the algorithm.' },
+          { severity: 'high', title: 'No Facebook Reels / short video content', description: 'Reels receive 3× the organic reach of regular video posts on Facebook in 2024-25.', recommendation: 'Publish at least 2 Reels per week — repurpose Instagram Reels or create native vertical videos.' },
+          { severity: 'medium', title: 'Posts lack engagement prompts', description: 'Content does not ask questions, use polls, or encourage tagging — leading to low comment rates.', recommendation: 'End every post with a question or reaction prompt (e.g. "Which do you prefer? React with ❤️ or 😮").' },
+          { severity: 'medium', title: 'Inconsistent brand visuals', description: 'Post graphics use varying fonts, colors, and styles — reducing brand recognition.', recommendation: 'Create 3-4 branded post templates in Canva or Adobe Express and stick to them across all content.' },
+        ]},
+        { title: 'Ads & Pixel Setup', score: 38, issues: [
+          { severity: 'high', title: 'Facebook Pixel not installed or misconfigured', description: 'Without the Pixel, you cannot retarget website visitors or build lookalike audiences — losing 60-70% of ad efficiency.', recommendation: 'Install the Meta Pixel on all website pages via Meta Business Manager > Events Manager.' },
+          { severity: 'high', title: 'No custom audiences created', description: 'Ad account has no saved audiences built from past visitors, video viewers, or page engagers.', recommendation: 'Create audiences: Website Visitors (30/60/90 days), Video Viewers (75%+), and Page Engagers.' },
+          { severity: 'medium', title: 'Ad creative not A/B tested', description: 'Running single ad creatives without testing variants wastes budget on underperforming formats.', recommendation: 'Run A/B tests with at least 3 headline variants and 2 visual variants per campaign.' },
+        ]},
+        { title: 'Community & Reviews', score: 61, issues: [
+          { severity: 'high', title: 'Low page review count', description: 'Fewer than 20 Facebook reviews significantly reduces trust for new visitors — 84% check reviews before contacting a business.', recommendation: 'Send existing customers a direct review link and add a "Leave us a review" CTA in email signatures and invoices.' },
+          { severity: 'medium', title: 'Slow response to messages', description: 'Page response time is above 1 hour — Facebook removes the "Very responsive" badge for pages over 15-minute average.', recommendation: 'Set up instant auto-replies with FAQ answers and aim to respond within 15 minutes.' },
+        ]},
+      ]},
+    ],
+    flipkart: [
+      { title: 'Flipkart Seller Audit', sections: [
+        { title: 'Listing Quality & Title', score: 52, issues: [
+          { severity: 'high', title: 'Product title not following Flipkart\'s title formula', description: 'Flipkart\'s algorithm ranks titles using: Brand + Product Name + Key Feature + Model + Size/Color. Your title deviates from this structure.', recommendation: 'Restructure title: "[Brand] [Product] – [Key Feature], [Variant], [Pack Size]" — keep under 100 characters.' },
+          { severity: 'high', title: 'Missing keywords in title and description', description: 'High-search keywords for this category are absent from your listing, reducing search visibility.', recommendation: 'Use Flipkart\'s search bar autocomplete to find top keywords — include top 5 in title and description.' },
+          { severity: 'medium', title: 'Description lacks specification table', description: 'Buyers on Flipkart rely heavily on the specification table for purchase decisions.', recommendation: 'Fill in all specification fields in the seller dashboard — empty specs trigger lower visibility.' },
+        ]},
+        { title: 'Images & Product Presentation', score: 44, issues: [
+          { severity: 'high', title: 'Fewer than 5 product images uploaded', description: 'Flipkart listings with 5+ images convert 35% better than those with 1-2 images.', recommendation: 'Upload: 1 main white background image + 2 angle shots + 1 feature callout image + 1 lifestyle image.' },
+          { severity: 'high', title: 'Main image below 500×500px resolution', description: 'Low-resolution images make your listing look unprofessional and reduce click-through rates.', recommendation: 'Upload images with minimum 1000×1000px (2000×2000px preferred) for zoom feature activation.' },
+          { severity: 'medium', title: 'No branded packaging shown', description: 'Customers can\'t see what the product packaging looks like — raises return rates.', recommendation: 'Add one image showing the product in its packaging so customers know what to expect on delivery.' },
+        ]},
+        { title: 'Pricing & Promotions', score: 47, issues: [
+          { severity: 'high', title: 'MRP not set strategically for discounting', description: 'Products without a visible discount (strike-through MRP) have 25% lower click rates on Flipkart.', recommendation: 'Set MRP at least 10-15% above selling price to always show a discount — this increases CTR significantly.' },
+          { severity: 'high', title: 'Not enrolled in Flipkart Assured or F-Assured program', description: 'F-Assured products appear higher in search results and see 2-3× better conversion.', recommendation: 'Meet quality, packaging, and SLA requirements to apply for Flipkart Assured status via your seller dashboard.' },
+          { severity: 'medium', title: 'No Flash Sale or promotional participation', description: 'Sellers not participating in Big Billion Days or Brand Days miss peak traffic windows.', recommendation: 'Enroll in upcoming promotional events via Seller Hub > Promotions section well in advance.' },
+        ]},
+        { title: 'Seller Metrics & Reviews', score: 41, issues: [
+          { severity: 'high', title: 'Low seller rating impacting buy-box share', description: 'A seller rating below 4.0 removes you from the buy-box on competitive listings.', recommendation: 'Focus on on-time dispatch, accurate descriptions, and proactive return management to improve rating.' },
+          { severity: 'high', title: 'High return rate on one or more products', description: 'Products with >5% return rate get algorithmically suppressed by Flipkart.', recommendation: 'Audit return reasons from Seller Hub > Returns — fix sizing charts, image accuracy, and description issues.' },
+          { severity: 'medium', title: 'Few product reviews', description: 'Products with fewer than 15 reviews rank significantly lower in category searches.', recommendation: 'Use Flipkart\'s "Request Review" feature after each confirmed delivery and improve packaging with a thank-you card.' },
+        ]},
+      ]},
+    ],
+    other: [
+      { title: 'Digital Presence Audit', sections: [
+        { title: 'Online Visibility & Brand Discoverability', score: 51, issues: [
+          { severity: 'high', title: 'Google Business Profile not set up or incomplete', description: 'Without a claimed and optimized Google Business Profile, you\'re invisible to 87% of local searches.', recommendation: 'Claim your GBP at business.google.com — add photos, hours, category, website, and get 5+ reviews.' },
+          { severity: 'high', title: 'No consistent NAP (Name, Address, Phone) across directories', description: 'Inconsistent business info across Justdial, Sulekha, IndiaMART, etc. hurts local SEO and trust.', recommendation: 'Audit all directory listings with a tool like BrightLocal and standardize your NAP details everywhere.' },
+          { severity: 'medium', title: 'No YouTube or video presence', description: 'Businesses with video content see 2× higher engagement and 80% more leads than text-only brands.', recommendation: 'Create a YouTube channel and upload 1-2 explainer or testimonial videos to start.' },
+          { severity: 'low', title: 'No LinkedIn company page', description: 'LinkedIn is critical for B2B trust — missing page reduces professional credibility.', recommendation: 'Create a LinkedIn Company Page, complete all sections, and post weekly industry content.' },
+        ]},
+        { title: 'Social Media Presence', score: 45, issues: [
+          { severity: 'high', title: 'Inactive or missing social media profiles', description: 'Brands with dormant or absent social profiles lose credibility — customers check social before purchasing.', recommendation: 'Identify the 2-3 platforms where your target audience is most active and post consistently (5x/week min).' },
+          { severity: 'high', title: 'No engagement with audience comments or DMs', description: 'Zero or delayed response to comments and messages signals neglect and reduces trust.', recommendation: 'Set up daily 15-minute community management sessions — respond to all comments and DMs within 24 hours.' },
+          { severity: 'medium', title: 'No user-generated content strategy', description: 'Not encouraging customers to share content featuring your product/service wastes free marketing.', recommendation: 'Create a branded hashtag and incentivize UGC with reposts, shoutouts, or small discounts.' },
+        ]},
+        { title: 'Lead Generation & Conversion', score: 43, issues: [
+          { severity: 'high', title: 'No lead capture mechanism on website', description: 'Website has no lead magnet, contact form, or free consultation offer — visitors leave without converting.', recommendation: 'Add a sticky CTA bar, a pop-up after 30 seconds, and a dedicated "Free Consultation" landing page.' },
+          { severity: 'high', title: 'WhatsApp Business not configured', description: 'In India, 95% of SMB leads prefer WhatsApp — not having a click-to-WhatsApp CTA loses leads.', recommendation: 'Set up WhatsApp Business with a catalog, auto-reply, and add a click-to-chat button to your website and social bios.' },
+          { severity: 'medium', title: 'No email marketing list or newsletter', description: 'Without an email list, you lose repeat contact ability and rely solely on paid/organic reach.', recommendation: 'Offer a free resource (checklist, guide, discount) in exchange for email signups and use tools like Mailchimp or Brevo.' },
+        ]},
+        { title: 'Paid Advertising Readiness', score: 37, issues: [
+          { severity: 'high', title: 'No tracking pixels or conversion tags installed', description: 'Running ads without Meta Pixel and Google Tag will waste 50-70% of ad spend on untrackable traffic.', recommendation: 'Install Meta Pixel (for Facebook/Instagram ads) and Google Analytics 4 + Google Ads tag on all pages before spending.' },
+          { severity: 'medium', title: 'No dedicated landing pages for campaigns', description: 'Sending ad traffic to a homepage increases bounce rate and reduces conversion by up to 60%.', recommendation: 'Create separate landing pages for each campaign with a single CTA, matching the ad\'s message.' },
+        ]},
+      ]},
+    ],
     website: [
       { title: 'Website Audit', sections: [
         { title: 'Performance & Speed', score: 54, issues: [
@@ -170,7 +243,7 @@ function generateMockReport(platform, url) {
     ],
   };
 
-  const platformData = platformIssues[platform] || platformIssues.website;
+  const platformData = platformIssues[platform] || platformIssues.other;
   const sections = platformData[0].sections;
   const overallScore = Math.round(sections.reduce((s, sec) => s + sec.score, 0) / sections.length);
 

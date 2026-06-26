@@ -86,10 +86,10 @@ export default function Signup() {
 
   const handleDirectSignup = async (e) => {
     e.preventDefault();
-    if (method === 'email' || method === 'phone') {
-      // Require OTP verification first
-      await sendOTP();
-    }
+    if (form.password.length < 8) { toast.error('Password must be at least 8 characters.'); return; }
+    if (form.password !== form.confirm) { toast.error('Passwords do not match.'); return; }
+    if (!form.agreed) { toast.error('Please agree to the Terms of Service.'); return; }
+    await sendOTP();
   };
 
   return (

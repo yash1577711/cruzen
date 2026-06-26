@@ -34,8 +34,16 @@ router.get('/:room', protect, async (req, res) => {
     const { room } = req.params;
     const order = await Order.findById(room);
     if (!order) return res.status(404).json({ success: false, message: 'Order not found.' });
-    const isClient = order.user.toString() === req.user._id.toString();
-    const isStaff = ['admin', 'sub-admin', 'pos_head', 'team_member'].includes(req.user.role);
+    const uid = req.user._id.toString();
+    const isClient = order.user.toString() === uid;
+    let isStaff = false;
+    if (['admin', 'sub-admin'].includes(req.user.role)) {
+      isStaff = true;
+    } else if (req.user.role === 'pos_head') {
+      isStaff = order.posHead?.toString() === uid;
+    } else if (req.user.role === 'team_member') {
+      isStaff = order.teamMembers.map(m => m.toString()).includes(uid);
+    }
     if (!isClient && !isStaff) return res.status(403).json({ success: false, message: 'Forbidden.' });
 
     const messages = await TeamMessage.find({ room })
@@ -56,6 +64,19 @@ router.post('/:room', protect, async (req, res) => {
   try {
     const { message } = req.body;
     if (!message?.trim()) return res.status(400).json({ success: false, message: 'Message required.' });
+    const order = await Order.findById(req.params.room);
+    if (!order) return res.status(404).json({ success: false, message: 'Order not found.' });
+    const uid = req.user._id.toString();
+    const isClient = order.user.toString() === uid;
+    let isStaff = false;
+    if (['admin', 'sub-admin'].includes(req.user.role)) {
+      isStaff = true;
+    } else if (req.user.role === 'pos_head') {
+      isStaff = order.posHead?.toString() === uid;
+    } else if (req.user.role === 'team_member') {
+      isStaff = order.teamMembers.map(m => m.toString()).includes(uid);
+    }
+    if (!isClient && !isStaff) return res.status(403).json({ success: false, message: 'Forbidden.' });
     const senderRole = ['admin', 'sub-admin'].includes(req.user.role) ? 'admin' :
       ['pos_head', 'team_member'].includes(req.user.role) ? 'team' : 'client';
     const msg = await TeamMessage.create({

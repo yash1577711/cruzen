@@ -88,7 +88,7 @@ router.post('/team', protect, async (req, res) => {
       const subject = `[Action Required] New ${type || 'requirement'} raised — ${title}`;
       const html = `<div style="font-family:'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:32px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;"><h2 style="color:#022B50;margin:0 0 16px;">New ${type || 'Requirement'} from Team</h2><p style="color:#64748b;margin:0 0 12px;">Your project team has raised a new item that requires your attention:</p><div style="background:#f8fafc;border-radius:12px;padding:16px 20px;margin:0 0 20px;border-left:3px solid #00B4CC;"><strong style="color:#022B50;">${title}</strong>${description ? `<p style="color:#64748b;margin:8px 0 0;font-size:0.9rem;">${description}</p>` : ''}</div><a href="${process.env.FRONTEND_URL || 'http://localhost:5173'}/dashboard?tab=requirements" style="display:inline-block;background:linear-gradient(135deg,#1dbf73,#00B4CC);color:#fff;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:700;">View in Dashboard →</a><p style="color:#94a3b8;font-size:0.8rem;margin:20px 0 0;">© 2026 Cruzen Digital</p></div>`;
       const trans = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587, secure: false, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
-      trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_USER}>`, to: order.user.email, subject, html }).catch(console.error);
+      trans.sendMail({ from: `"Cruzen Digital" <${process.env.SMTP_FROM}>`, to: order.user.email, subject, html }).catch(console.error);
     }
     res.status(201).json({ success: true, requirement: req_ });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
@@ -100,6 +100,10 @@ router.post('/:id/reply', protect, async (req, res) => {
     const { message } = req.body;
     const req_ = await Requirement.findById(req.params.id);
     if (!req_) return res.status(404).json({ success: false, message: 'Not found.' });
+    const uid = req.user._id.toString();
+    const isOwner = req_.user.toString() === uid;
+    const isStaff = ['admin', 'sub-admin', 'pos_head', 'team_member'].includes(req.user.role);
+    if (!isOwner && !isStaff) return res.status(403).json({ success: false, message: 'Forbidden.' });
     req_.replies.push({ sender: req.user._id, message });
     await req_.save();
     res.json({ success: true, requirement: req_ });
@@ -111,6 +115,10 @@ router.patch('/:id/status', protect, async (req, res) => {
   try {
     const req_ = await Requirement.findById(req.params.id);
     if (!req_) return res.status(404).json({ success: false, message: 'Not found.' });
+    const uid = req.user._id.toString();
+    const isOwner = req_.user.toString() === uid;
+    const isStaff = ['admin', 'sub-admin', 'pos_head', 'team_member'].includes(req.user.role);
+    if (!isOwner && !isStaff) return res.status(403).json({ success: false, message: 'Forbidden.' });
     req_.status = req.body.status;
     await req_.save();
     res.json({ success: true, requirement: req_ });

@@ -12,6 +12,7 @@ const connectDB = require('./config/db');
 const TeamMessage = require('./models/TeamMessage');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const Order = require('./models/Order');
 
 const app = express();
 const server = http.createServer(app);
@@ -34,8 +35,6 @@ app.use(cors({ origin: allowedOrigins, credentials: true, methods: ['GET', 'POST
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200, standardHeaders: true, legacyHeaders: false, message: { success: false, message: 'Too many requests, please try again later.' } });
 app.use('/api/', limiter);
 
-const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: process.env.NODE_ENV === 'development' ? 100 : 15, message: { success: false, message: 'Too many login attempts, please try again in 15 minutes.' } });
-
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 app.use(mongoSanitize());
@@ -43,7 +42,7 @@ app.use(compression());
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 // Routes
-app.use('/api/auth', authLimiter, require('./routes/auth'));
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 // posRouter must come BEFORE main admin router — main router has requireAdminOrSubAdmin globally
 const { posRouter } = require('./routes/admin');
@@ -87,12 +86,25 @@ io.use(async (socket, next) => {
   } catch (err) { next(new Error('Auth failed')); }
 });
 
+async function canAccessChatRoom(user, roomId) {
+  if (['admin', 'sub-admin'].includes(user.role)) return true;
+  const order = await Order.findById(roomId).select('user posHead teamMembers');
+  if (!order) return false;
+  const uid = user._id.toString();
+  if (user.role === 'user') return order.user.toString() === uid;
+  if (user.role === 'pos_head') return order.posHead?.toString() === uid;
+  if (user.role === 'team_member') return order.teamMembers.map(m => m.toString()).includes(uid);
+  return false;
+}
+
 io.on('connection', (socket) => {
   const userId = socket.user._id.toString();
   onlineUsers.set(userId, socket.id);
 
-  socket.on('join_room', (room) => {
-    socket.join(room);
+  socket.on('join_room', async (room) => {
+    try {
+      if (await canAccessChatRoom(socket.user, room)) socket.join(room);
+    } catch (err) { console.error('join_room auth error:', err.message); }
   });
 
   socket.on('leave_room', (room) => {
@@ -102,6 +114,7 @@ io.on('connection', (socket) => {
   socket.on('send_message', async ({ room, message }) => {
     try {
       if (!message?.trim()) return;
+      if (!await canAccessChatRoom(socket.user, room)) return;
       const senderRole = ['admin', 'sub-admin'].includes(socket.user.role) ? 'admin' :
         ['pos_head', 'team_member'].includes(socket.user.role) ? 'team' : 'client';
       const msg = await TeamMessage.create({

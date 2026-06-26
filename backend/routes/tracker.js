@@ -24,7 +24,7 @@ router.get('/order/:orderId', async (req, res) => {
     }
     const tracker = await ServiceTracker.findOne({ order: req.params.orderId })
       .populate('service', 'title icon plans')
-      .populate('order', 'planName amount invoiceNumber serviceName')
+      .populate('order', 'planName amount invoiceNumber serviceName duration quantity endDate')
       .populate('updates.updatedBy', 'name role');
     res.json({ success: true, tracker });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }

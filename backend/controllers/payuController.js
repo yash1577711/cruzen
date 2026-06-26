@@ -83,6 +83,11 @@ exports.payuSuccess = async (req, res) => {
       }
     }
 
+    const existingOrder = await Order.findById(orderId);
+    if (existingOrder && existingOrder.status === 'active') {
+      return res.redirect(`${process.env.FRONTEND_URL}/dashboard?payment=success`);
+    }
+
     const order = await Order.findByIdAndUpdate(
       orderId,
       {

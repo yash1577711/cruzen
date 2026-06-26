@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /login
+Disallow: /signup
+Disallow: /auth/
+
+Sitemap: https://cruzendigital.us.cc/sitemap.xml

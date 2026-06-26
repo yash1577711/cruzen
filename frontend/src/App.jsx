@@ -30,6 +30,8 @@ import AdminOnboarding from './pages/admin/AdminOnboarding.jsx';
 import AdminStaff from './pages/admin/AdminStaff.jsx';
 import AiAudit from './pages/AiAudit.jsx';
 import ServiceLanding from './pages/ServiceLanding.jsx';
+import PaymentFailed from './pages/PaymentFailed.jsx';
+import Cart from './pages/Cart.jsx';
 import PosHeadDashboard from './pages/user/PosHeadDashboard.jsx';
 import TeamMemberDashboard from './pages/user/TeamMemberDashboard.jsx';
 import AuthCallback from './pages/AuthCallback.jsx';
@@ -60,6 +62,8 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/ai-audit" element={<AiAudit />} />
+      <Route path="/payment-failed" element={<PaymentFailed />} />
+      <Route path="/cart" element={<Cart />} />
 
       {/* User dashboard — role-based */}
       <Route path="/dashboard" element={<ProtectedRoute><RoleBasedDashboard /></ProtectedRoute>} />

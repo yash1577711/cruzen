@@ -1,29 +1,8 @@
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const MARKETPLACES = ['Amazon','Flipkart','Meesho','Myntra','Ajio','Shopify','Snapdeal','Etsy','eBay'];
 
-const FEATURES = [
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 20v-6h6v6"/></svg>,
-    title: 'Marketplace mastery',
-    desc: 'End-to-end account management across Amazon, Flipkart, Meesho and more — not just ad spend.',
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
-    title: 'Full-funnel team',
-    desc: 'SEO, paid media, design and dev sit under one roof. No handoffs, no vendor juggling.',
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>,
-    title: 'Transparent reporting',
-    desc: 'Real dashboards, real spend, zero markup on media. You see what we see.',
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 5.7L19.5 9l-5.6 1.5L12 16l-1.9-5.5L4.5 9l5.6-1.3L12 2Z"/><path d="M19 14.2l.85 2.4 2.4.65-2.4.6-.85 2.4-.85-2.4-2.4-.6 2.4-.65.85-2.4Z"/></svg>,
-    title: 'Fast to launch',
-    desc: 'Strategy to live campaign without committees or agency red tape slowing you down.',
-  },
-];
 
 const BADGES = [
   { label: 'Amazon Registered Partner', star: false },
@@ -52,17 +31,7 @@ export default function WhyChoose() {
       ).join('');
     }
 
-    /* spotlight hover */
-    document.querySelectorAll('.wc-feature').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-      });
-    });
-
-    const gsap = window.gsap;
-    if (!gsap || ranRef.current) return;
+    if (ranRef.current) return;
 
     function animateCounters() {
       document.querySelectorAll('.wc-num[data-val]').forEach(el => {
@@ -120,9 +89,7 @@ export default function WhyChoose() {
         .from('.wc-badge',           { y: 10, opacity: 0, duration: .45, stagger: .08 }, '-=.45')
         .to('#wc-chartPanel',        { opacity: 1, y: 0, duration: .6 }, '-=.3')
         .from('#wc-chartPanel',      { y: 24 }, '<')
-        .add(runChart,               '-=.1')
-        .to('.wc-feature',           { opacity: 1, y: 0, duration: .55, stagger: .1 }, '-=1.0')
-        .from('.wc-feature',         { y: 24 }, '<');
+        .add(runChart,               '-=.1');
     }
 
     const obs = new IntersectionObserver(entries => {
@@ -208,18 +175,6 @@ export default function WhyChoose() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* feature cards */}
-        <div className="wc-features">
-          {FEATURES.map((f, i) => (
-            <div key={i} className="wc-feature">
-              <div className="wc-spotlight" />
-              <div className="wc-feature-icon">{f.icon}</div>
-              <h3>{f.title}</h3>
-              <p>{f.desc}</p>
-            </div>
-          ))}
         </div>
 
         {/* marquee */}

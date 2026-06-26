@@ -10,10 +10,10 @@ export default function Login() {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get('redirect') || '/dashboard';
 
-  // Already logged in — send to correct destination
+  // Already logged in — send to correct destination (honour ?redirect= param)
   useEffect(() => {
     if (!authLoading && user) {
-      const dest = ['admin', 'sub-admin'].includes(user.role) ? '/admin' : '/dashboard';
+      const dest = ['admin', 'sub-admin'].includes(user.role) ? '/admin' : (redirect || '/dashboard');
       navigate(dest, { replace: true });
     }
   }, [user, authLoading]);
@@ -61,7 +61,12 @@ export default function Login() {
       const dest = ['admin', 'sub-admin'].includes(data.user.role) ? '/admin' : redirect;
       navigate(dest, { replace: true });
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Login failed. Check your credentials.', { toastId: 'login-error' });
+      const msg = err.response?.data?.message || 'Login failed. Check your credentials.';
+      toast.error(msg, { toastId: 'login-error', autoClose: 6000 });
+      if (err.response?.data?.isGoogleAccount) {
+        setTab('otp');
+        setIdentifier(email);
+      }
     } finally { setLoading(false); }
   };
 
@@ -173,6 +178,7 @@ export default function Login() {
 
               {/* Google Button */}
               <a href="/api/auth/google"
+                onClick={() => { if (redirect && redirect !== '/dashboard') localStorage.setItem('cruzen_auth_redirect', redirect); }}
                 style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '13px', border: '1.5px solid var(--border-color)', borderRadius: 12, background: '#fff', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 700, color: 'var(--dark-blue)', marginBottom: 20, textDecoration: 'none', transition: 'all 0.25s', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = '#4285F4'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(66,133,244,0.15)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
